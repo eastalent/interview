@@ -1,3 +1,6 @@
+//I'm preparing for applying for summer intern, and this's what I'm learning recently, 
+//I think it's a interesting thought, so I use this as a code example.
+
 package letecode;
 
 class SegTreeNode{
@@ -13,8 +16,8 @@ public class segment_tree {
 	/*
 	bulid a segment tree
 	arr: input array
-	istart£ºarray's start index
-	iend£ºarray's end index
+	istartï¼šarray's start index
+	iendï¼šarray's end index
 	*/
 	void build(SegTreeNode root, int arr[], int istart, int iend)
 	{
@@ -32,28 +35,28 @@ public class segment_tree {
 	}
 
 	/*
-	¹¦ÄÜ£ºµ±Ç°½ÚµãµÄ±êÖ¾ÓòÏòº¢×Ó½Úµã´«µİ
-	root: µ±Ç°Ïß¶ÎÊ÷µÄ¸ù½ÚµãÏÂ±ê
+	åŠŸèƒ½ï¼šå½“å‰èŠ‚ç‚¹çš„æ ‡å¿—åŸŸå‘å­©å­èŠ‚ç‚¹ä¼ é€’
+	root: å½“å‰çº¿æ®µæ ‘çš„æ ¹èŠ‚ç‚¹ä¸‹æ ‡
 	*/
 	void pushDown(SegTreeNode root)
 	{
 	    if(root.addMark != 0)
 	    {
-	        //ÉèÖÃ×óÓÒº¢×Ó½ÚµãµÄ±êÖ¾Óò£¬ÒòÎªº¢×Ó½Úµã¿ÉÄÜ±»¶à´ÎÑÓ³Ù±ê¼ÇÓÖÃ»ÓĞÏòÏÂ´«µİ
-	        //ËùÒÔÊÇ ¡°+=¡±
+	        //è®¾ç½®å·¦å³å­©å­èŠ‚ç‚¹çš„æ ‡å¿—åŸŸï¼Œå› ä¸ºå­©å­èŠ‚ç‚¹å¯èƒ½è¢«å¤šæ¬¡å»¶è¿Ÿæ ‡è®°åˆæ²¡æœ‰å‘ä¸‹ä¼ é€’
+	        //æ‰€ä»¥æ˜¯ â€œ+=â€
 	        root.left.addMark += root.addMark;
 	        root.right.addMark += root.addMark;
-	        //¸ù¾İ±êÖ¾ÓòÉèÖÃº¢×Ó½ÚµãµÄÖµ¡£ÒòÎªÎÒÃÇÊÇÇóÇø¼ä×îĞ¡Öµ£¬Òò´Ëµ±Çø¼äÄÚÃ¿¸öÔª
-	        //ËØ¼ÓÉÏÒ»¸öÖµÊ±£¬Çø¼äµÄ×îĞ¡ÖµÒ²¼ÓÉÏÕâ¸öÖµ
+	        //æ ¹æ®æ ‡å¿—åŸŸè®¾ç½®å­©å­èŠ‚ç‚¹çš„å€¼ã€‚å› ä¸ºæˆ‘ä»¬æ˜¯æ±‚åŒºé—´æœ€å°å€¼ï¼Œå› æ­¤å½“åŒºé—´å†…æ¯ä¸ªå…ƒ
+	        //ç´ åŠ ä¸Šä¸€ä¸ªå€¼æ—¶ï¼ŒåŒºé—´çš„æœ€å°å€¼ä¹ŸåŠ ä¸Šè¿™ä¸ªå€¼
 	        root.left.val += root.addMark;
 	        root.right.val += root.addMark;
-	        //´«µİºó£¬µ±Ç°½Úµã±ê¼ÇÓòÇå¿Õ
+	        //ä¼ é€’åï¼Œå½“å‰èŠ‚ç‚¹æ ‡è®°åŸŸæ¸…ç©º
 	        root.addMark = 0;
 	    }
 	}
 
 	/*
-	root£ºthe current root
+	rootï¼šthe current root
 	[nstart, nend]: the current interval
 	[qstart, qend]: query interval
 	*/
@@ -75,7 +78,7 @@ public class segment_tree {
 
 	/*
 	update all nodes' value in one interval
-	root£ºcurrent 
+	rootï¼šcurrent 
 	[nstart, nend]: the current interval
 	[ustart, uend]: interval to be updated
 	addVal: new value need to be added
@@ -101,7 +104,7 @@ public class segment_tree {
 	
 	/*
 	update a node's value
-	root£ºcurrent root node
+	rootï¼šcurrent root node
 	[nstart, nend]: the current interval
 	index: index of the updated node
 	addVal: additional value
