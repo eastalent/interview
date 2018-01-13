@@ -35,22 +35,16 @@ public class segment_tree {
 	}
 
 	/*
-	功能：当前节点的标志域向孩子节点传递
-	root: 当前线段树的根节点下标
+	transfer delay mark
 	*/
 	void pushDown(SegTreeNode root)
 	{
 	    if(root.addMark != 0)
 	    {
-	        //设置左右孩子节点的标志域，因为孩子节点可能被多次延迟标记又没有向下传递
-	        //所以是 “+=”
 	        root.left.addMark += root.addMark;
 	        root.right.addMark += root.addMark;
-	        //根据标志域设置孩子节点的值。因为我们是求区间最小值，因此当区间内每个元
-	        //素加上一个值时，区间的最小值也加上这个值
 	        root.left.val += root.addMark;
 	        root.right.val += root.addMark;
-	        //传递后，当前节点标记域清空
 	        root.addMark = 0;
 	    }
 	}
